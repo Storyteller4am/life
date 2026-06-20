@@ -43,13 +43,13 @@ html{ scroll-behavior:smooth; }
 =================================== */
 
 .yt-hero{
-    min-height:90vh;
+    min-height:auto;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:80px 20px 40px;
+    padding:56px 20px 16px;
 }
 
 .yt-eyebrow{
@@ -59,14 +59,14 @@ html{ scroll-behavior:smooth; }
     font-size:.75rem;
     color:var(--yt-red);
     opacity:.85;
-    margin-bottom:34px;
+    margin-bottom:20px;
 }
 
 .yt-play{
     position:relative;
-    width:130px;
-    height:130px;
-    border-radius:50%;
+    width:170px;
+    height:118px;
+    border-radius:28px;
     border:none;
     background:var(--yt-red);
     color:var(--yt-black);
@@ -74,7 +74,7 @@ html{ scroll-behavior:smooth; }
     align-items:center;
     justify-content:center;
     cursor:pointer;
-    margin-bottom:40px;
+    margin-bottom:26px;
     box-shadow:0 0 60px rgba(255,10,53,.45);
     transition:transform .3s ease, box-shadow .3s ease;
 }
@@ -89,8 +89,8 @@ html{ scroll-behavior:smooth; }
 }
 
 .yt-play-icon{
-    width:42px;
-    height:42px;
+    width:48px;
+    height:48px;
     margin-left:6px;
     position:relative;
     z-index:2;
@@ -99,7 +99,7 @@ html{ scroll-behavior:smooth; }
 .yt-play-ring{
     position:absolute;
     inset:0;
-    border-radius:50%;
+    border-radius:28px;
     border:1.5px solid rgba(255,10,53,.5);
     animation:ytPulse 2.6s ease-out infinite;
 }
@@ -136,7 +136,7 @@ html{ scroll-behavior:smooth; }
     max-width:760px;
     margin:0 auto;
     text-align:center;
-    padding:40px 0 100px;
+    padding:16px 0 70px;
 }
 
 .yt-coming-soon h2{
@@ -177,7 +177,7 @@ html{ scroll-behavior:smooth; }
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:20px;
-    margin-top:70px;
+    margin-top:46px;
 }
 
 .yt-slate{
@@ -221,6 +221,102 @@ html{ scroll-behavior:smooth; }
 }
 
 /* ===================================
+   SCROLL GUIDE — rocket / parachuter / dig / bubble
+=================================== */
+
+.yt-guide{
+    position:fixed;
+    right:22px;
+    bottom:0;
+    width:90px;
+    height:260px;
+    pointer-events:none;
+    z-index:5;
+}
+
+.yt-guide-rocket{
+    position:absolute;
+    left:50%;
+    width:30px;
+    transform:translateX(-50%);
+    animation:gdRocket 9s ease-in-out infinite;
+}
+
+.yt-guide-parachuter{
+    position:absolute;
+    left:50%;
+    width:56px;
+    transform:translateX(-50%);
+    animation:gdParachuter 9s ease-in-out infinite;
+}
+
+.yt-chute{ width:100%; display:block; }
+.yt-figure{ width:62%; margin:-6px auto 0; display:block; }
+
+.yt-shovel{
+    transform-origin:34px 16px;
+    animation:gdDig 1s ease-in-out infinite;
+}
+
+.yt-guide-bubble{
+    position:absolute;
+    right:6px;
+    bottom:14px;
+    background:#fff;
+    color:var(--yt-black);
+    font-family:var(--font-mono);
+    font-size:.62rem;
+    line-height:1.5;
+    text-align:center;
+    padding:8px 12px;
+    border-radius:10px;
+    white-space:nowrap;
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+    opacity:0;
+    animation:gdBubble 9s ease-in-out infinite;
+}
+
+.yt-guide-bubble::after{
+    content:"";
+    position:absolute;
+    bottom:-6px;
+    right:18px;
+    border:6px solid transparent;
+    border-top-color:#fff;
+}
+
+@keyframes gdRocket{
+    0%{ bottom:0; opacity:0; }
+    6%{ opacity:1; }
+    38%{ bottom:80%; opacity:1; }
+    44%{ opacity:0; bottom:90%; }
+    100%{ opacity:0; bottom:90%; }
+}
+
+@keyframes gdParachuter{
+    0%,40%{ top:-40px; opacity:0; }
+    44%{ opacity:1; }
+    78%{ top:170px; opacity:1; }
+    82%{ top:178px; }
+    100%{ top:178px; opacity:1; }
+}
+
+@keyframes gdDig{
+    0%,100%{ transform:rotate(-12deg); }
+    50%{ transform:rotate(18deg); }
+}
+
+@keyframes gdBubble{
+    0%,79%{ opacity:0; transform:translateY(6px); }
+    84%,95%{ opacity:1; transform:translateY(0); }
+    100%{ opacity:0; transform:translateY(6px); }
+}
+
+@media (max-width:900px){
+    .yt-guide{ display:none; }
+}
+
+/* ===================================
    FOOTER
 =================================== */
 
@@ -237,7 +333,7 @@ html{ scroll-behavior:smooth; }
 
 @media (max-width:768px){
     .yt-hero h1{ font-size:2rem; }
-    .yt-play{ width:100px; height:100px; }
-    .yt-play-icon{ width:32px; height:32px; }
+    .yt-play{ width:130px; height:90px; border-radius:22px; }
+    .yt-play-icon{ width:36px; height:36px; }
     .yt-coming-soon h2{ font-size:1.6rem; }
 }
